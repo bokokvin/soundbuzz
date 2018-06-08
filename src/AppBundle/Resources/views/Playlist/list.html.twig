@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Playlist:list{% endblock %}
+
+{% block body %}
+<h3>La liste de vos playlist</h3>
+
+<ul>
+  {% for playlist in playlistList %}
+
+    <li> 
+      <a href="{{ path('playlist_view', {'id': playlist.id } ) }}">{{ playlist.nom }}</a>
+      <a href="">Supprimer cette playlist</a>
+
+    </li>
+
+  {% endfor %}
+</ul>
+{% endblock %}

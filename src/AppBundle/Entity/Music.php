@@ -20,17 +20,17 @@ class Music
     private $user;
 
     /**
-   * @ORM\OneToOne(targetEntity="AppBundle\Entity\Morceau", cascade={"persist"})
+   * @ORM\OneToOne(targetEntity="AppBundle\Entity\Morceau", cascade={"persist", "remove"})
    * @ORM\JoinColumn(nullable=false)
    */
     private $morceau;
 
     /**
-   * @ORM\OneToOne(targetEntity="AppBundle\Entity\Photo", cascade={"persist"})
-   */
-  private $photo;
+    * @ORM\OneToOne(targetEntity="AppBundle\Entity\Photo", cascade={"persist"})
+    */
+    private $photo;
 
-
+    
 
     /**
      * @var int
@@ -344,4 +344,5 @@ class Music
     {
         return $this->photo;
     }
+
 }

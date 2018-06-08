@@ -17,6 +17,9 @@ use AppBundle\Form\MusicType;
 
 class MusicController extends Controller
 {
+    /**
+    * @Route("music/list", name="music_list")
+    */
     public function listAction()
     {  
         $user = $this->getUser()->getId();  
@@ -26,21 +29,22 @@ class MusicController extends Controller
 
         $listMusic = $musicRepository->findByUser($user);
 
-        return $this->render('Music/list.html.twig', array(
+        return $this->render('AppBundle:Music:list.html.twig', array(
             'listMusic' => $listMusic,
           ));
 
 
     }
 
-
+    /**
+    * @Route("music/add", name="music_add")
+    */
     public function addAction(Request $request)
     {
     
     $em = $this->getDoctrine()->getManager();
     $morceauRepository = $em->getRepository('AppBundle:Morceau');
     
-    $morceau = $morceauRepository->find(3);
     $user = $this->getUser();
     
     // On crée un objet Music
@@ -48,7 +52,6 @@ class MusicController extends Controller
     $form = $this->get('form.factory')->create(MusicType::class, $music);
     
     $music->setUser($user);
-    //$music->setMorceau($morceau);
 
 
     if ($request->isMethod('POST')) {
@@ -73,11 +76,16 @@ class MusicController extends Controller
 
     // On passe la méthode createView() du formulaire à la vue
     // afin qu'elle puisse afficher le formulaire toute seule
-    return $this->render('Music/add.html.twig', array(
+    return $this->render('AppBundle:Music:add.html.twig', array(
       'form' => $form->createView(),
     ));
     }
 
+
+
+    /**
+    * @Route("music/play/{id}", name="music_play")
+    */
     public function playAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -89,10 +97,27 @@ class MusicController extends Controller
 
         $urlMusic = $playMusic->getMorceau()->getUploadDir();
 
-        return $this->render('Music/play.html.twig', 
+        return $this->render('AppBundle:Music:play.html.twig', 
         array(
             'urlMusic' => $urlMusic, "name" => $name,
           ));
+    }
+
+
+    /**
+    * @Route("music/delete/{id}", name="music_delete")
+    */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $musicRepository = $em->getRepository('AppBundle:Music');
+
+        $deleteMusic = $musicRepository->findOneById($id);
+
+        $em->remove($deleteMusic);
+        $em->flush();
+
+        return $this->redirectToRoute('music_list');
     }
 
 }

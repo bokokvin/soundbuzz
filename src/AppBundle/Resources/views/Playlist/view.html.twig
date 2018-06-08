@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Playlist:list{% endblock %}
+
+{% block body %}
+<h1>les morceaux de la playlist</h1>
+
+<ul>
+  {% for music in musics %}
+
+    <li> 
+      <a href="">{{ music.titre }}</a>
+      <a href="">Supprimer ce morceau de la playlist</a>
+
+    </li>
+
+  {% endfor %}
+</ul>
+{% endblock %}

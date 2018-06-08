@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Playlist:list{% endblock %}
+
+{% block body %}
+
+<h3>Choisissez une playlist</h3>
+<ul>
+  {% for playlist in playlistList %}
+
+    <li> 
+      <a href="">{{ playlist.nom }}</a>
+      <a href="{{ path('playlist_add_song', {'id_m': id_music, 'id_p': playlist.id } ) }}">Ajouter à cette playlist</a>
+
+    </li>
+
+  {% endfor %}
+</ul>
+{% endblock %}

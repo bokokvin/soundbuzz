@@ -21,16 +21,16 @@ class MusicType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('titre',      TextType::class)
-        ->add('genre',     TextType::class)
-        ->add('photo',     PhotoType::class, array('required' => false))
-        ->add('description',   TextareaType::class)
-        ->add('artiste',     TextType::class)
-        ->add('temps',     IntegerType::class)
+        ->add('titre',          TextType::class)
+        ->add('genre',          TextType::class)
+        ->add('photo',          PhotoType::class)
+        ->add('description',    TextareaType::class)
+        ->add('artiste',        TextType::class)
+        ->add('temps',          IntegerType::class)
         ->add('telechargeable', CheckboxType::class, array('required' => false))
-        ->add('date_creation',     DateType::class)
-        ->add('morceau',     MorceauType::class)
-        ->add('save',      SubmitType::class);
+        ->add('date_creation',  DateType::class)
+        ->add('morceau',        MorceauType::class)
+        ->add('save',           SubmitType::class);
     }/**
      * {@inheritdoc}
      */
