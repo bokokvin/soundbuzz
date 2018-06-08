@@ -8,6 +8,16 @@
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        {% block head_css %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        {% endblock %}
+        
+        {% block javascripts %}
+
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+        {% endblock %}
     </body>
 </html>
