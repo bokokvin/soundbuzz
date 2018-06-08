@@ -69,6 +69,24 @@ class PlaylistController extends Controller
     }
 
 
+    
+    /**
+    * @Route("playlist/delete/{id}", name="playlist_delete")
+    */
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $playlistRepository = $em->getRepository('AppBundle:Playlist');
+
+        $deletePlaylist = $playlistRepository->findOneById($id);
+
+        $em->remove($deletePlaylist);
+        $em->flush();
+
+        return $this->redirectToRoute('playlist_list');
+    }
+
+
     /**
      * @Route("playlist/choix/{id_music}", name="playlist_choix")
      */
@@ -111,6 +129,29 @@ class PlaylistController extends Controller
 
 
     /**
+     * @Route("playlist/delete/song/{id_m}/{id_p}", name="playlist_delete_song")
+     */
+    public function deleteSongAction($id_m, $id_p, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $musicRepository = $em->getRepository('AppBundle:Music');
+        $playlistRepository = $em->getRepository('AppBundle:Playlist');
+
+        $playlist1 = $playlistRepository->findOneById($id_p);
+        $MusicToAdd = $musicRepository->findOneById($id_m);
+
+        $playlist1->removeMusic($MusicToAdd);
+
+        //$em->persist($MusicToAdd);
+        $em->flush();
+
+        return $this->redirectToRoute('playlist_view', array('id' => $id_p));
+
+    }
+
+
+    /**
      * @Route("playlist/view/{id}", name="playlist_view")
      */
     public function viewAction($id, Request $request)
@@ -118,15 +159,13 @@ class PlaylistController extends Controller
         $em = $this->getDoctrine()->getManager();
         $playlistRepository = $em->getRepository('AppBundle:Playlist');
 
-        $list  = $playlistRepository->findOneById($id);
+        $playlist  = $playlistRepository->findOneById($id);
 
-        $musics = $list->getMusics();
+        $musics = $playlist->getMusics();
 
         return $this->render('AppBundle:Playlist:view.html.twig', array(
-            'musics' => $musics,
+            'musics' => $musics, 'playlist' => $playlist,
           ));
-
-
 
     }
 

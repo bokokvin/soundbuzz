@@ -9,8 +9,8 @@
   {% for music in musics %}
 
     <li> 
-      <a href="">{{ music.titre }}</a>
-      <a href="">Supprimer ce morceau de la playlist</a>
+      <a href="{{ path('music_play', {'id': music.id } ) }}">{{ music.titre }}</a>
+      <a href="{{ path('playlist_delete_song', {'id_m': music.id, 'id_p': playlist.id } ) }}">Supprimer ce morceau de la playlist</a>
 
     </li>
 
