@@ -1,0 +1,9 @@
+<h1> Les titres des morceaux de l'utilisateur {{ app.user.username }} </h1>
+
+<ul>
+  {% for music in listMusic %}
+
+    <li> <a href="{{ path('music_play', {'id': music.id } ) }}">{{ music.titre }}</a> </li>
+
+  {% endfor %}
+</ul>

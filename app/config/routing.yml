@@ -4,3 +4,16 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+music_list:
+    path:      /music/list
+    defaults: { _controller: AppBundle:Music:list }
+
+music_add:
+    path:      /music/add
+    defaults: { _controller: AppBundle:Music:add }
+
+music_play:
+    path:      /music/play/{id}
+    defaults: { _controller: AppBundle:Music:play }
+
