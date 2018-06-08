@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}SoundBuzz{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <!--link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}"-->
+            <link rel="stylesheet" href="{{ asset('bundles/foscomment/css/comments.css') }}">
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -30,9 +33,6 @@
 
         {% block body %}{% endblock %}
 
-        {% block head_css %}
-            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-        {% endblock %}
         
         {% block javascripts %}
 

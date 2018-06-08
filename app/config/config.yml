@@ -6,11 +6,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -79,7 +79,7 @@ fos_user:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:    [ ]
+    bundles:    [ "FOSCommentBundle" ]
     #java: /usr/bin/java
     #java: C:\Program Files\Java\jdk1.8.0_65\bin\java.exe
     filters:
@@ -141,4 +141,16 @@ assetic:
                 - "%kernel.root_dir%/../vendor/twbs/bootstrap/fonts/glyphicons-halflings-regular.woff"
 
             output: "fonts/glyphicons-halflings-regular.woff"
+
+
+
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: AppBundle\Entity\Comment
+            thread: AppBundle\Entity\Thread
+            vote: AppBundle\Entity\Vote
+
+
 

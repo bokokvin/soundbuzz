@@ -1,37 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block head_css %}
-<link rel="stylesheet" href="{{ asset('css/audio-player.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-
-<script src="{{ asset('js/audio-player.js') }}"></script>
-
-{% endblock %}
 
 {% block body %}
-<audio controls>
+<!--audio controls>
   <source src = {{ urlMusic }}/{{ name }} type="audio/mpeg">
-</audio>
+</audio-->
 
-<div class="audio-player">
-  <div id="play-btn"></div>
-  <div class="audio-wrapper" id="player-container" href="javascript:;">
-    <audio id="player" ontimeupdate="initProgressBar()">
-      <source src="https://dl-web.dropbox.com/get/Oslo.mp3?_subject_uid=199049471&w=AABuDNt9BDJnaZOelVFws9FXTufkXCvAPS5SYpy_gRZ2GQ&duc_id=dropbox_duc_id" type="audio/mp3">
-    </audio>
-  </div>
-  <div class="player-controls scrubber">
-    <p>Oslo <small>by</small> Holy Esque</p>
-    <span id="seek-obj-container">
-      <progress id="seek-obj" value="0" max="1"></progress>
-    </span>
-    <small style="float: left; position: relative; left: 15px;" id="start-time"></small>
-    <small style="float: right; position: relative; right: 20px;" id="end-time"></small>
-  </div>
-  <div class="album-image" style="background-image: url(https://artistxite.ie/imgcache/album/005/161/005161476_500.jpg)"></div>
+<link rel="stylesheet" href="{{ asset('css/audio.css') }}">
+
+<div class="container">
+    <div class="column add-bottom">
+        <div id="mainwrap">
+            <div id="nowPlay">
+                <span class="left" id="npAction">Paused...</span>
+                <span class="right" id="npTitle"></span>
+            </div>
+            <div id="audiowrap">
+                <div id="audio0">
+                    <audio preload id="audio1" controls="controls">Your browser does not support HTML5 Audio!</audio>
+                </div>
+                <div id="tracks">
+                    <a id="btnPrev">&larr;</a>
+                    <a id="btnNext">&rarr;</a>
+                </div>
+            </div>
+            <div id="plwrap">
+                <ul id="plList"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="column add-bottom center">
+        <p>Music by <a href="http://www.mythium.net/">Mythium</a></p>
+        <p>Download: <a href="https://archive.org/download/mythium/mythium_vbr_mp3.zip">zip</a> / <a href="https://archive.org/download/mythium/mythium_archive.torrent">torrent</a></p>
+    </div>
 </div>
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/audio.js') }}"></script>
+{% include '@FOSComment/Thread/async.html.twig' with {'id': 'foo'} %}
+
 {% endblock %}
 
 
