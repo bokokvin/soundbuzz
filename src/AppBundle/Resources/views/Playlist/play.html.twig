@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 
-
 {% block body %}
+
+
 
 <div class="container">
     <div class="column add-bottom">
@@ -20,18 +21,24 @@
                     <a id="btnNext">&rarr;</a>
                 </div>
             </div>
-
+            <div id="plwrap">
+                <ul id="plList"></ul>
+            </div>
         </div>
     </div>
-
+    <div class="column add-bottom center">
+        <p>Music by <a href="http://www.mythium.net/">Mythium</a></p>
+        <p>Download: <a href="https://archive.org/download/mythium/mythium_vbr_mp3.zip">zip</a> / <a href="https://archive.org/download/mythium/mythium_archive.torrent">torrent</a></p>
+    </div>
 </div>
 
 
-{% include '@FOSComment/Thread/async.html.twig' with {'id': playMusic.id} %}
+
+
 
 <script>
 
-    jQuery(function ($) {
+            jQuery(function ($) {
     'use strict'
     var supportsAudio = !!document.createElement('audio').canPlayType;
     if (supportsAudio) {
@@ -39,12 +46,17 @@
             playing = false,
             mediaPath = "http://localhost/soundbuzz/uploads/sons/",
             extension = '',
-            tracks = [{
-                "track": {{ playMusic.id }},
-                "name": "{{ playMusic.getMorceau.getUrl }}",
+           
+            tracks = [
+             {% for music in musics %}
+            {
+                "track": {{ music.id }},
+                "name": "{{ music.getMorceau.getUrl }}",
                 "duration": "2:46",
-                "file": "{{ playMusic.getMorceau.getUrl }}"
-            }],
+                "file": "{{ music.getMorceau.getUrl }}"
+            },
+            {% endfor %}
+            ],
             buildPlaylist = $(tracks).each(function(key, value) {
                 var trackNumber = value.track,
                     trackName = value.name,
@@ -126,13 +138,8 @@
 </script>
 
 
+{% include '@FOSComment/Thread/async.html.twig' with {'id': 'foo'} %}
 
 
 
 {% endblock %}
-
-
-
-
-
- 

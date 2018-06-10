@@ -5,13 +5,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\CommentBundle\Entity\Comment as BaseComment;
+use FOS\CommentBundle\Model\SignedCommentInterface;
 use FOS\CommentBundle\Model\VotableCommentInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity
  * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
  */
-class Comment extends BaseComment implements VotableCommentInterface
+class Comment extends BaseComment implements SignedCommentInterface, VotableCommentInterface
 {
     /**
      * @ORM\Id

@@ -99,7 +99,7 @@ class MusicController extends Controller
 
         return $this->render('AppBundle:Music:play.html.twig', 
         array(
-            'urlMusic' => $urlMusic, "name" => $name, "id" => $id,
+            'urlMusic' => $urlMusic, "name" => $name, "playMusic" => $playMusic,
           ));
     }
 

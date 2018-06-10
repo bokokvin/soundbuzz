@@ -171,4 +171,24 @@ class PlaylistController extends Controller
 
 
 
+    /**
+    * @Route("playlist/play/{id}", name="playlist_play")
+    */
+    public function playAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $playlistRepository = $em->getRepository('AppBundle:Playlist');
+
+        $playlist  = $playlistRepository->findOneById($id);
+
+        $musics = $playlist->getMusics();
+
+        return $this->render('AppBundle:Playlist:play.html.twig', 
+        array(
+            "musics" => $musics,
+          ));
+    }
+
+
+
 }
