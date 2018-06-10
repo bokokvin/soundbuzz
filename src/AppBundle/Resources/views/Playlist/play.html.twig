@@ -36,9 +36,18 @@
 
 
 
+
+
+
+{% include '@FOSComment/Thread/async.html.twig' with {'id': id} %}
+
+
+
+
+
 <script>
 
-            jQuery(function ($) {
+    jQuery(function ($) {
     'use strict'
     var supportsAudio = !!document.createElement('audio').canPlayType;
     if (supportsAudio) {
@@ -136,10 +145,5 @@
 });
 
 </script>
-
-
-{% include '@FOSComment/Thread/async.html.twig' with {'id': 'foo'} %}
-
-
 
 {% endblock %}

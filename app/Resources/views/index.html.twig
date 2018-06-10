@@ -2,4 +2,8 @@
 
 {% block body %}
     <h1>SoundBuzz</h1>
+
+    {{ mgilet_notification_render( app.user ) }}
+
+    {{ app.user.id }}
 {% endblock %}

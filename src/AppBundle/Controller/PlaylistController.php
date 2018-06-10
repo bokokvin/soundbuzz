@@ -185,8 +185,8 @@ class PlaylistController extends Controller
 
         return $this->render('AppBundle:Playlist:play.html.twig', 
         array(
-            "musics" => $musics,
-          ));
+            "musics" => $musics, "id" => $id,
+          )); 
     }
 
 

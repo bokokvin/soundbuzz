@@ -66,6 +66,9 @@ class MusicController extends Controller
             $em->persist($music);
             $em->flush();
 
+            $manager = $this->get('mgilet.notification');
+            $notif   = $manager->createNotification('New song','Vous venez d\'ajouter un nouveau morceau' ,'http://google.fr');
+            $manager->addNotification(array($this->getUser()), $notif, true);
 
             return $this->redirectToRoute('music_list');
         }
