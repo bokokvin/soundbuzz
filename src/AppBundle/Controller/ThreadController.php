@@ -509,7 +509,7 @@ class ThreadController extends Controller
     public function getThreadCommentVotesAction($id, $commentId)
     {
         $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
-
+        $comment = $this->container->get('fos_comment.manager.comment')->findCommentById($commentId);
 
         if (null === $thread || null === $comment || $comment->getThread() !== $thread) {
             throw new NotFoundHttpException(sprintf("No comment with id '%s' found for thread with id '%s'", $commentId, $id));
@@ -573,9 +573,9 @@ class ThreadController extends Controller
     {
         $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
         $comment = $this->container->get('fos_comment.manager.comment')->findCommentById($commentId);
-        $vote = $this->container->get('fos_comment.manager.vote')->findVoteBy(array('comment' => $commentId));
+        // $vote = $this->container->get('fos_comment.manager.vote')->findVoteBy(array('comment' => $commentId));
 
-        $voter = $vote->getVoter();
+        //$voter = $vote->getVoter();
         $author = $comment->getAuthor();
 
         if (null === $thread || null === $comment || $comment->getThread() !== $thread) {
@@ -593,7 +593,7 @@ class ThreadController extends Controller
             $voteManager->saveVote($vote);
 
             $manager = $this->get('mgilet.notification');
-            $notif   = $manager->createNotification('New song',"$voter a aimé votre commentaire" ,'http://google.fr');
+            $notif   = $manager->createNotification('New song',"Une personne a aimé votre commentaire" ,'http://google.fr');
             $manager->addNotification(array($author), $notif, true);
 
             return $this->getViewHandler()->handle($this->onCreateVoteSuccess($form, $id, $commentId));
