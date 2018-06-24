@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle($this),
             new Mgilet\NotificationBundle\MgiletNotificationBundle(),
             new AppBundle\AppBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

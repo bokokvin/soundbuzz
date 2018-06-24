@@ -15,6 +15,10 @@ mgilet_notifications:
     resource: "@MgiletNotificationBundle/Controller/"
     prefix: /notifications
 
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin
 
 
 
