@@ -7,6 +7,10 @@
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
 </div>
 
+<div class="edit-profile">
+    <a href="{{ path('fos_user_profile_edit') }}">Edit profile</a>
+</div>
+
 <div class="change-password">
     <a href="{{ path('fos_user_change_password') }}">Change password</a>
 </div>

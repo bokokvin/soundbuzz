@@ -37,10 +37,10 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_UTILISATEUR:  ROLE_USER
-        ROLE_MODERATEUR:   ROLE_MODERATEUR
-        ROLE_PROPRIETAIRE: ROLE_PROPRIETAIRE
         ROLE_ADMIN:        ROLE_ADMIN
+        ROLE_PROPRIETAIRE: ROLE_USER
+        ROLE_MODERATEUR:   ROLE_USER
+        ROLE_UTILISATEUR:  ROLE_USER
 
 #    providers:
 #        fos_userbundle:
