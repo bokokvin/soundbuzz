@@ -345,4 +345,131 @@ class Music
         return $this->photo;
     }
 
+
+
+
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    protected $score = 0;
+
+    /**
+     * Sets the score of the comment.
+     *
+     * @param integer $score
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+    }
+
+    /**
+     * Returns the current score of the comment.
+     *
+     * @return integer
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Increments the comment score by the provided
+     * value.
+     *
+     * @param integer value
+     *
+     * @return integer The new comment score
+     */
+    public function incrementScore($by = 1)
+    {
+        $this->score += $by;
+    }
+
+
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    protected $ecoute = 0;
+
+    /**
+     * Sets the score of the comment.
+     *
+     * @param integer $ecoute
+     */
+    public function setEcoute($ecoute)
+    {
+        $this->ecoute = $ecoute;
+    }
+
+    /**
+     * Returns the current score of the comment.
+     *
+     * @return integer
+     */
+    public function getEcoute()
+    {
+        return $this->ecoute;
+    }
+
+    /**
+     * Increments the comment score by the provided
+     * value.
+     *
+     * @param integer value
+     *
+     * @return integer The new comment score
+     */
+    public function incrementEcoute($by = 1)
+    {
+        $this->ecoute += $by;
+    }
+
+
+
+    /**
+     * @ORM\Column(type="integer")
+     * @var int
+     */
+    protected $download = 0;
+
+    /**
+     * Sets the score of the comment.
+     *
+     * @param integer $download
+     */
+    public function setDownload($download)
+    {
+        $this->download = $download;
+    }
+
+    /**
+     * Returns the current score of the comment.
+     *
+     * @return integer
+     */
+    public function getDownload()
+    {
+        return $this->download;
+    }
+
+    /**
+     * Increments the comment score by the provided
+     * value.
+     *
+     * @param integer value
+     *
+     * @return integer The new comment score
+     */
+    public function incrementDownload($by = 1)
+    {
+        $this->download += $by;
+    }
+
+
+
 }

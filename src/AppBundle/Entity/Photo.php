@@ -119,7 +119,7 @@ class Photo
     $name = $this->file->getClientOriginalName();
 
     // On déplace le fichier envoyé dans le répertoire de notre choix
-    $this->file->move($this->getUploadRootDir(), $name);
+    $this->file->move("C:\wamp32\www\soundbuzz\web\uploads\images_sons", $name);
 
     // On sauvegarde le nom de fichier dans notre attribut $url
     $this->url = $name;

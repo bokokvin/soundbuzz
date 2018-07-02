@@ -1,0 +1,14 @@
+<h1> Tous les titres </h1>
+
+<ul>
+  {% for music in listMusic %}
+
+    <li> 
+      <a href="{{ path('music_play', {'id': music.id } ) }}">{{ music.titre }}</a>
+      <a href="{{ path('music_delete', {'id': music.id } ) }}">Supprimer ce morceau</a>
+      <a href="{{ path('playlist_choix', {'id_music': music.id } ) }}">Ajouter à une playlist</a>
+      <b> {{ music.genre }} {{ music.artiste }}</b> 
+    </li>
+
+  {% endfor %}
+</ul>

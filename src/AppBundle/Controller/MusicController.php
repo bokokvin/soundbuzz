@@ -4,19 +4,43 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use AppBundle\Entity\Music;
 use AppBundle\Entity\Morceau;
+use AppBundle\Entity\Appreciation;
+use AppBundle\Entity\Ecoute;
 
 use AppBundle\Form\MusicType;
 
 
 
-
 class MusicController extends Controller
 {
+
+
+    /**
+    * @Route("music/all", name="music_all")
+    */
+    public function listAllAction()
+    {  
+        //$user = $this->getUser()->getId();  
+
+        $em = $this->getDoctrine()->getManager();
+        $musicRepository = $em->getRepository('AppBundle:Music');
+
+        $listMusic = $musicRepository->findAll();
+
+        return $this->render('AppBundle:Music:all.html.twig', array(
+            'listMusic' => $listMusic,
+          ));
+
+
+    }
+
+
     /**
     * @Route("music/list", name="music_list")
     */
@@ -121,6 +145,140 @@ class MusicController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('music_list');
+    }
+
+
+    /**
+    * @Route("music/add/like/{id}", name="music_like")
+    */
+    public function likeAction(Request $request, $id)
+    {
+
+        if($request->request->get('some_var_name')){
+
+        $em = $this->getDoctrine()->getManager();
+        $musicRepository = $em->getRepository('AppBundle:Music');
+        $appreciationRepository = $em->getRepository('AppBundle:Appreciation');
+
+        $user = $this->getUser();
+        $music = $musicRepository->findOneById($id);
+
+        $appreciation = $appreciationRepository->findOneByLiker($user);
+        
+        if ($appreciation == null || $appreciation->getMusic()->getId() != $id )
+        {
+
+                $Appreciation = new Appreciation(); 
+                $Appreciation->setLiker($user);
+                $Appreciation->setMusic($music);
+                $Appreciation->setDate(new \DateTime());
+                $Appreciation->setValue(1);
+                $Appreciation->getMusic()->incrementScore(1);
+                $em->persist($Appreciation);
+                $em->flush();
+
+                $decremente = 1;        
+
+                $nbLike = $Appreciation->getMusic()->getScore();
+                $arrData = ['output' => $nbLike];
+
+            
+            return new JsonResponse($arrData);
+            
+        }
+        else
+        {
+
+            $appreciation->getMusic()->incrementScore(-1);
+            $em->remove($appreciation);
+
+            $em->flush();
+
+            $nbLike = $appreciation->getMusic()->getScore();
+            $arrData = ['output' => $nbLike];
+            return new JsonResponse($arrData);
+        }
+
+
+        
+        }
+
+    }
+
+
+
+
+    /**
+    * @Route("music/add/ecoute/{id}", name="music_ecoute")
+    */
+    public function ecouteAction(Request $request, $id)
+    {
+
+        if($request->request->get('some_var_name')){
+
+        $em = $this->getDoctrine()->getManager();
+        $musicRepository = $em->getRepository('AppBundle:Music');
+        $ecouteRepository = $em->getRepository('AppBundle:Ecoute');
+
+        $user = $this->getUser();
+        $music = $musicRepository->findOneById($id);
+
+        $ecoute = $ecouteRepository->findOneByEcouteur($user);
+        
+        if ($ecoute == null || $ecoute->getMusic()->getId() != $id )
+        {
+
+                $Ecoute = new Ecoute(); 
+                $Ecoute->setEcouteur($user);
+                $Ecoute->setMusic($music);
+                $Ecoute->setDate(new \DateTime());
+                $Ecoute->setValue(1);
+                $Ecoute->getMusic()->incrementEcoute(1);
+                $em->persist($Ecoute);
+                $em->flush();      
+
+                $nbEcoute = $Ecoute->getMusic()->getEcoute();
+                $arrData = ['output' => $nbEcoute];
+
+            
+                return new JsonResponse($arrData);
+            
+        }
+        else
+        {
+            $nbEcoute = $ecoute->getMusic()->getEcoute();
+            $arrData = ['output' => $nbEcoute];
+            return new JsonResponse($arrData);
+        }}
+    }
+
+
+    /**
+    * @Route("music/add/download/{id}", name="music_download")
+    */
+    public function downloadAction(Request $request, $id)
+    {
+
+        if($request->request->get('some_var_name')){
+
+        $em = $this->getDoctrine()->getManager();
+        $musicRepository = $em->getRepository('AppBundle:Music');
+        $music = $musicRepository->findOneById($id);
+
+
+        $music->incrementDownload(1);
+        $em->flush();
+
+        $nbDownload = $music->getDownload();
+
+        $arrData = ['output' => $nbDownload];
+        return new JsonResponse($arrData);
+        }
+
+
+        
+        
+
     }
 
 }

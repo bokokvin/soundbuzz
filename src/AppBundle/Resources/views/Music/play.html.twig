@@ -13,19 +13,105 @@
             </div>
             <div id="audiowrap">
                 <div id="audio0">
-                    <audio preload id="audio1" controls="controls"  {% if playMusic.getTelechargeable == 0 %}
-controlsList="nodownload" {% endif %} >Your browser does not support HTML5 Audio!</audio>
+                    <audio preload id="audio1" controls="controls" controlsList="nodownload" >Your browser does not support HTML5 Audio!</audio>
+                    {% if playMusic.getTelechargeable == 1 %}  <a href="http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" download > Télécharger </a> {% endif %}
                 </div>
                 <div id="tracks">
                     <a id="btnPrev">&larr;</a>
                     <a id="btnNext">&rarr;</a>
                 </div>
             </div>
-
+           
         </div>
-    </div>
+        <a class="ajax" href="{{ path('music_like', {'id': playMusic.id } ) }}">J'aime</a> <b id="ajax-results">{{ playMusic.score}}</b>
+        <b id="ecoute-results" href="#">{{ playMusic.ecoute }} </b> écoute(s)
+        <b id="download-results" href="#">{{ playMusic.download }} </b> téléchargement(s)
 
+        
+
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"> Partager
+        </a>
+
+        
+
+
+    </div>
+    
 </div>
+
+    <script>
+    
+        $(document).on('click', 'a.ajax', function(){
+            that = $(this);
+            $.ajax({
+                url:'{{ path('music_like', {'id': playMusic.id } ) }}',
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "some_var_name": "some_var_value"
+                },
+                async: true,
+                success: function (data)
+                {
+                    //console.log(data)
+                    $('b#ajax-results').html(data.output);
+
+                }
+            });
+            return false;
+
+        });
+
+
+
+         $('#audio1').on('playing', function(){
+            that = $(this);
+            $.ajax({
+                url:'{{ path('music_ecoute', {'id': playMusic.id } ) }}',
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "some_var_name": "some_var_value"
+                },
+                async: true,
+                success: function (data)
+                {
+                    //console.log(data)
+                    $('b#ecoute-results').html(data.output);
+
+                }
+            });
+            return false;
+
+        });
+
+        
+        $(document).on('click', 'a#download', function(){
+        that = $(this);
+        $.ajax({
+            url:'{{ path('music_download', {'id': playMusic.id } ) }}',
+            type: "POST",
+            dataType: "json",
+            data: {
+                "some_var_name": "some_var_value"
+            },
+            async: true,
+            success: function (data)
+            {
+                //console.log(data)
+                $("#download").attr("download","value want to set");
+                $('b#download-results').html(data.output);
+
+            }
+        });
+        return false;
+
+    });
+
+
+
+        
+    </script>
 
 
 {% include '@FOSComment/Thread/async.html.twig' with {'id': playMusic.id} %}
@@ -38,7 +124,7 @@ controlsList="nodownload" {% endif %} >Your browser does not support HTML5 Audio
     if (supportsAudio) {
         var index = 0,
             playing = false,
-            mediaPath = "http://localhost/soundbuzz/uploads/sons/",
+            mediaPath = "http://soundbuzz.fr/uploads/sons/",
             extension = '',
             tracks = [{
                 "track": {{ playMusic.id }},
