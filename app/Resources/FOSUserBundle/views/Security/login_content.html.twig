@@ -2,9 +2,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+
 
 <div class="container">
     <div class="card card-container">
@@ -29,15 +27,19 @@
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label-->
 
     <div id="remember" class="checkbox">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
+        <label style="color:white;">
+            <input  type="checkbox" value="remember-me"> Remember me
         </label>
     </div>
-
      <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin" name="_submit"  > {{ 'security.login.submit'|trans }}  </button>
 </form>
 
 <a class="forgot-password" href="{{ path('fos_user_resetting_request') }}"> Mot de passe oublié ? </a>
+
+
+{% if error %}
+    <div style="color:white;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
 
 </div>
 </div>

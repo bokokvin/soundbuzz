@@ -79,6 +79,9 @@
 }
 
 .form-signin #inputEmail,
+.form-signin #inputUsername,
+.form-signin #fos_user_registration_form_plainPassword_first,
+.form-signin #fos_user_registration_form_plainPassword_second,
 .form-signin #inputPassword {
     direction: ltr;
     height: 44px;

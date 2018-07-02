@@ -1,8 +1,42 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-    </div>
-{{ form_end(form) }}
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+
+<div style="color:white;" class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+
+<form class="form-signin" action="{{ path("fos_user_registration_register") }}" method="post">
+
+    <input type="hidden" id="fos_user_registration_form__token" name="fos_user_registration_form[_token]" value="AOvWmb0ZJunLpTGZuukYfkaU8Q_W4mSFMh3gPckGR1c">
+
+    <span id="reauth-email" class="reauth-email"></span>
+
+    <!--label for="username">{{ 'security.login.username'|trans }}</label-->
+    <input type="text" id="inputEmail" class="form-control" name="fos_user_registration_form[email]"  required="required" placeholder="Adresse E-mail" />
+
+    <input type="text" id="inputUsername" class="form-control" name="fos_user_registration_form[username]"  required="required" placeholder="Nom d'utilisateur" maxlength="180" pattern=".{2,}"/>
+
+    <!--label for="password">{{ 'security.login.password'|trans }}</label-->
+    <input type="password" id="fos_user_registration_form_plainPassword_first" class="form-control" name="fos_user_registration_form[plainPassword][first]" required="required" placeholder="Mot de passe" />
+
+    <input type="password" id="fos_user_registration_form_plainPassword_second" class="form-control" name="fos_user_registration_form[plainPassword][second]" required="required" placeholder="Répétez le mot de passe" />
+
+
+    <!--input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label-->
+
+     <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin" name="_submit"  > {{ 'registration.submit'|trans }}  </button>
+
+
+</form>
+
+
+</div>
+</div>
+
+
+
