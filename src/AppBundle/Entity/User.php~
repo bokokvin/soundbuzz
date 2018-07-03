@@ -108,7 +108,7 @@ class User extends BaseUser
     /**
      * Set birthday.
      *
-     * @param \Date|null $birthday
+     * @param \DateTime|null $birthday
      *
      * @return User
      */
@@ -122,7 +122,7 @@ class User extends BaseUser
     /**
      * Get birthday.
      *
-     * @return \Date|null
+     * @return \DateTime|null
      */
     public function getBirthday()
     {
