@@ -48,7 +48,7 @@ class User extends BaseUser implements NotifiableInterface
      * @ORM\Column(name="birthday", type="date", nullable=true)
      * @Assert\Date()
      */
-    protected $birthday;
+    private $birthday;
 
 
     /**
