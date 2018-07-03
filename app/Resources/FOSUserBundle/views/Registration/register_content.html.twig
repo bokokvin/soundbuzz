@@ -1,5 +1,28 @@
 {% trans_default_domain 'FOSUserBundle' %}
+ <div class="wrapper_login">
+        <div class="container">
+          <!-- Content here -->
+          <div class="login">
+		<img class="logo" src="../image/logo_blanc.png">
+		{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+		<div class="form-group">
+		    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email' } }) }}
+		</div>
+		<div class="form-group">
+		    {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder': 'Nom utilisateur' } }) }}
+		</div>
+		<div class="form-group">
+		    {{ form_widget(form.plainPassword, {'attr': {'placeholder': 'Mot de Passe' } }) }}
+		</div>
+		<div class="form-group">
+		    {{ form_widget(form.birthday) }}
+		</div>
+		<div>
+		    <input type="submit" class="btn" value="{{ 'registration.submit'|trans }}" />
+		</div>
+		<small id="emailHelp" class="form-text text-muted">Vous avez dèjà un compte chez nous ? <a href="{{ path('fos_user_security_login') }}">Se connecter</a></small>
 
+<<<<<<< HEAD
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
 
@@ -40,3 +63,14 @@
 
 
 
+=======
+			  <hr>
+		<small id="emailHelp" class="form-text text-muted">Ou vous pouvez vous isncrire via votre réseau social</small>
+		<button type="submit" class="btn facebook">S'inscrire avec Facebook</button>
+
+		{{ form_end(form) }}
+
+	</div><!--login-->
+	</div><!--container-->
+</div><!--<wrapper-->
+>>>>>>> dev2

@@ -1,3 +1,12 @@
-<!--h1>Formulaire connexion</h1-->
-{{ include('@FOSUser/Security/login_content.html.twig') }}
-
+{% extends "base.html.twig" %}
+{% block body %}
+ <div class="wrapper_login">
+        <div class="container">
+          <!-- Content here -->
+          <div class="login">
+    <!--<h6>Formulaire connexion</h6>-->
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+ </div><!--login-->
+</div><!--container-->
+</div><!--<wrapper-->
+{% endblock %}

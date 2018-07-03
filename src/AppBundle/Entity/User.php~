@@ -6,17 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FOS\UserBundle\Model\User as BaseUser;
 
-use Mgilet\NotificationBundle\Annotation\Notifiable;
-use Mgilet\NotificationBundle\NotifiableInterface;
-
 /**
  * User
  *
  * @ORM\Table(name="user")
- * @Notifiable(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User extends BaseUser implements NotifiableInterface
+class User extends BaseUser
 {
 
     /**
@@ -31,14 +27,14 @@ class User extends BaseUser implements NotifiableInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
+     * @ORM\Column(name="firstname", type="string", length=255)
      */
     private $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
+     * @ORM\Column(name="lastname", type="string", length=255)
      */
     private $lastname;
 
@@ -112,7 +108,7 @@ class User extends BaseUser implements NotifiableInterface
     /**
      * Set birthday.
      *
-     * @param \Date|null $birthday
+     * @param \DateTime|null $birthday
      *
      * @return User
      */
@@ -126,7 +122,7 @@ class User extends BaseUser implements NotifiableInterface
     /**
      * Get birthday.
      *
-     * @return \Date|null
+     * @return \DateTime|null
      */
     public function getBirthday()
     {

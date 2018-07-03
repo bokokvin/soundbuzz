@@ -1,9 +1,10 @@
 /** page login contenu**/
 .wrapper_login {
-	background-image:url(../image/guitar.jpg);
+	background-image:url(../image/bg.jpg);
 	background-repeat:no-repeat;
 	height: 100vh;
 	padding-top: 50px;
+	background-size: cover;
 }
 
 /***header***/
@@ -11,6 +12,38 @@
 	width: 25%;
 	margin: 0 auto;
 	display: block;
+}
+.logo1 {
+ width: 50%;
+ margin-left: 50px;
+}
+.menu_right{
+	display: flex;
+	margin-right: 50px;
+}
+.menu_right a {
+	display: block;
+	margin: 0 10px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+}
+.ind {
+	color: #000 !important;
+	background: #fff !important;
+	padding: 5px 20px;	
+}
+
+.ins {
+	color: #fff !important;
+	background: #333 !important;
+	padding: 5px 20px;
+}
+.navbar {
+ background: transparent;
+ position: absolute;
+ width: 100%;
+ z-index: 9999;
 }
 
 /**formulaire de connexion**/
@@ -29,7 +62,8 @@ form {
 	display: block;
 	margin: 10px auto;
 	color: #fff;
-	background: #333;
+	border-radius: 30px;
+	background: #ad1c89;
 }
 .form-control {
 	border-radius: 0;
@@ -63,6 +97,27 @@ form hr {
 }
 a {
 	color: #999;
+}
+.form-group ul {
+	color: #fff;
+}
+
+/*****slider******/
+
+.bloc-btn {
+	margin-bottom: 15rem;
+	text-align: left !important;	
+}
+.carousel-caption p {
+	font-size: 2em;
+	text-align: left;
+}
+.carousel-caption h2 {
+	font-size: 3em;
+	text-align: left;
+}
+.essaye {
+	width: 200px !important; 
 }
 
 /******responsive design*****/
