@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
 
+    <!--link rel="stylesheet" href="{{ asset('bundles/foscomment/css/comments.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/audio.css') }}"-->
+{% endblock %}
 
 {% block body %}
+
+
 
 <div class="container">
     <div class="column add-bottom">
@@ -14,13 +20,16 @@
             <div id="audiowrap">
                 <div id="audio0">
                     <audio preload id="audio1" controls="controls" controlsList="nodownload" >Your browser does not support HTML5 Audio!</audio>
-                    {% if playMusic.getTelechargeable == 1 %}  <a href="http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" download > Télécharger </a> {% endif %}
+                     {% if playMusic.getTelechargeable == 1 %}  <a href="http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" download > Télécharger </a> {% endif %}
                 </div>
+                
                 <div id="tracks">
                     <a id="btnPrev">&larr;</a>
                     <a id="btnNext">&rarr;</a>
                 </div>
             </div>
+
+           
            
         </div>
         <a class="ajax" href="{{ path('music_like', {'id': playMusic.id } ) }}">J'aime</a> <b id="ajax-results">{{ playMusic.score}}</b>
@@ -39,7 +48,13 @@
     
 </div>
 
-    <script>
+
+{% include '@FOSComment/Thread/async.html.twig' with {'id': playMusic.id} %}
+
+
+
+
+<script>
     
         $(document).on('click', 'a.ajax', function(){
             that = $(this);
@@ -111,10 +126,7 @@
 
 
         
-    </script>
-
-
-{% include '@FOSComment/Thread/async.html.twig' with {'id': playMusic.id} %}
+</script>
 
 <script>
 
@@ -127,7 +139,7 @@
             mediaPath = "http://soundbuzz.fr/uploads/sons/",
             extension = '',
             tracks = [{
-                "track": {{ playMusic.id }},
+                "track": "{{ playMusic.id }}",
                 "name": "{{ playMusic.getMorceau.getUrl }}",
                 "duration": "2:46",
                 "file": "{{ playMusic.getMorceau.getUrl }}"

@@ -1,0 +1,33 @@
+Informations
+<ul>
+    <li> {{ user.username}}</li> 
+    <li> {{ user.email}}</li> 
+</ul> 
+
+Musiques
+<ul>
+  {% for m in music %}
+
+    <li> 
+        {{ m.titre }}
+      <!--a href="{{ path('music_delete', {'id': m.id } ) }}">Supprimer ce morceau</a-->
+      <a href="{{ path('playlist_choix', {'id_music': m.id } ) }}">Ajouter à une playlist</a>
+      <a href="{{ path('music_play', {'id': m.id } ) }}">Jouer</a>
+    </li>
+
+  {% endfor %}
+</ul>
+
+Playlists
+<ul>
+  {% for p in playlist %}
+
+    <li> 
+      <a href="{{ path('playlist_view', {'id': p.id } ) }}">{{ p.nom }}</a>
+      <!--a href="{{ path('playlist_delete', {'id': p.id } ) }}">Supprimer cette playlist</a-->
+      <a href="{{ path('playlist_play', {'id': p.id } ) }}">Jouer cette playlist</a>
+
+    </li>
+
+  {% endfor %}
+</ul>

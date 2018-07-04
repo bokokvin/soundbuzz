@@ -20,6 +20,34 @@ class DefaultController extends Controller
 
 
     /**
+    * @Route("profile-others/{id}", name="profile_others")
+    */
+    public function profileAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $userRepository = $em->getRepository('AppBundle:User');
+        $musicRepository = $em->getRepository('AppBundle:Music');
+        $playlistRepository = $em->getRepository('AppBundle:Playlist');
+
+        $user  = $userRepository->findOneById($id);
+
+        $music = $musicRepository->findByUser($user);
+
+        $playlist = $playlistRepository->findByUser($user);
+        
+
+        return $this->render('AppBundle:Default:profile.html.twig', 
+        array(
+            'user' => $user,
+            'music' => $music,
+            'playlist' => $playlist,
+
+          ));
+    }
+
+
+    /**
      * @Route("/send-notification", name="send_notification")
      */
     public function sendNotification(Request $request)

@@ -59,9 +59,9 @@
             tracks = [
              {% for music in musics %}
             {
-                "track": {{ music.id }},
+                "track": "{{ music.id }}",
                 "name": "{{ music.getMorceau.getUrl }}",
-                "duration": "2:46",
+                "duration": "{{ music.getTemps }}",
                 "file": "{{ music.getMorceau.getUrl }}"
             },
             {% endfor %}
@@ -69,7 +69,7 @@
             buildPlaylist = $(tracks).each(function(key, value) {
                 var trackNumber = value.track,
                     trackName = value.name,
-                    trackDuration = value.duration;
+                    trackDuration = value.duration + 's';
                 if (trackNumber.toString().length === 1) {
                     trackNumber = '0' + trackNumber;
                 }

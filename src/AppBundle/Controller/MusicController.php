@@ -51,7 +51,8 @@ class MusicController extends Controller
         $em = $this->getDoctrine()->getManager();
         $musicRepository = $em->getRepository('AppBundle:Music');
 
-        $listMusic = $musicRepository->findByUser($user);
+        //$listMusic = $musicRepository->findByUser($user);
+        $listMusic = $musicRepository->findAll();
 
         return $this->render('AppBundle:Music:list.html.twig', array(
             'listMusic' => $listMusic,
@@ -176,6 +177,10 @@ class MusicController extends Controller
                 $Appreciation->getMusic()->incrementScore(1);
                 $em->persist($Appreciation);
                 $em->flush();
+
+                $manager = $this->get('mgilet.notification');
+                $notif   = $manager->createNotification('New song',"Une personne a aimé votre musique" ,'http://google.fr');
+                $manager->addNotification(array($music->getUser()), $notif, true);
 
                 $decremente = 1;        
 
