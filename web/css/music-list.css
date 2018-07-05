@@ -53,7 +53,7 @@ body {
 .card-body
 {
   padding: .5rem;
-
+    /* height: 600px; */
 }
 
 .title-music {

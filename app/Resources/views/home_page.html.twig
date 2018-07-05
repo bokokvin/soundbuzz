@@ -6,13 +6,17 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/menu.css') }}">
         <link rel="stylesheet" href="css/sliding-carousel.css" />
         <!--<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">-->
+
+		 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="{{ asset('css/music-list.css') }}">
         {% endblock %}
 {% block body %}
 <!--content-->
 <div class="page_content">
 <h1 class="page_title">
 	<div class="logo">
-	 	<img class="logo" src="../image/logo_blanc.png">
+	 	<a href="{{ path('userhomepag' ) }}"><img class="logo" src="../image/logo_blanc.png"></a> 
 	</div>
 	<!--input serch-->
     <div id="custom-search-input">
@@ -48,52 +52,157 @@
 	<!--Carousel music-->
 	<div id="carousel">
 	<h3>Nouveautés</h3>
+
+			{% for music in listMusic %}
+
 				<div class="slide">
 					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-1.jpg') }}" /> </a>
-						<span> Lorem ipsum dolor sit amet, consectetur elit </span>
-					</p>
-				</div>
-				<div class="slide">
-					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-2.jpg') }}"/>	</a>
-						<span> Aliquam at tincidunt metus. </span>
-					</p>
-				</div>
-				<div class="slide">
-					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-3.jpg') }}"/> </a>
-						<span> Donec pellentesque leo ac risus porta non rhoncus nisi vehicula.	</span>
-					</p>
-				</div>
-				<div class="slide">
-					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-4.jpg') }}"/> </a>
-						<span> Donec augue mi, ullamcorper vel placerat. </span>
-					</p>
-				</div>
-				<div class="slide">
-					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-5.jpg') }}"/> </a>
-						<span> Curabitur nec dapibus neque. Aenean orci enim, rutrum ac lacinia in, dapibus sit amet lorem.	</span>
-					</p>
-				</div>
-				<div class="slide">
-					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-6.jpg') }}"/>	</a>
-						<span> Praesent tortor neque, pulvinar non faucibus a, vestibulum a massa. </span>
-					</p>
-				</div>
-				<div class="slide">
-					<p>
-						<a href="#"> <img alt="Image Caption" src="{{ asset('image/slider/carousel-7.jpg') }}"> </a>
-						<span> Praesent molestie molestie ultrices. Mauris adipiscing suscipit pulvinar. </span>
+						<a href="#"> <img style="height:253px; width:253px" alt="Image Caption" src="http://soundbuzz.fr/uploads/images_sons/bloggif_5b3a18741d32b.jpeg" /> </a>
+						<span>{{ music.titre }}</span>
 					</p>
 				</div>
 
+			{% endfor %}
+				
 				<div class="navigate-left"><img src="{{ asset('image/slider/arrow-left.png') }}" /></div>
 				<div class="navigate-right"><img src="{{ asset('image/slider/arrow-right.png') }}" /></div>
 		</div>
+
+<!--music list-->
+
+
+<div class="container">
+
+
+
+
+    <h4 class="title-music"> <i class="fa fa-music" style="font-size:24px;color:red"></i> <b>NOS MORCEAUX</b></h4>
+	<div class="row">
+
+
+  {% for music in listMusic %}
+
+    
+  
+		<div class="col-sm-3">
+		    
+        <!--Card-->
+        <div class="card">
+
+            <!--Card image-->
+            <img class="img-responsive" style="height:253px" src="http://soundbuzz.fr/uploads/images_sons/{{ music.getPhoto.getUrl }}" alt="Card image cap">
+
+            <!--Card content-->
+            <div class="card-body">
+                <!--Title-->
+                <h4 class="card-title"><b>{{ music.titre }}</b></h4>
+                <!--Text-->
+                <p class="card-text"><i>Ajouté par <a href="{{ path('profile_others', {'id': music.getUser.getId } ) }}">{{ music.getUser.username }}</a> </i></p>
+                <a href="{{ path('music_play', {'id': music.id } ) }}" class="btn btn-primary">Jouer</a> 
+                <a href="{{ path('playlist_choix', {'id_music': music.id } ) }}" class="btn btn-primary">Ajouter à une playlist</a>
+            </div>
+          </div>
+        
+<!--/.Card-->
+			</div>
+
+      {% endfor %}
+
+	</div>
+</div>    
+
+
+
+<!--playlist list-->
+
+
+<div class="container">
+
+
+
+
+    <h4 class="title-music"> <i class="fa fa-list" style="font-size:24px;color:red"></i> <b>NOS PLAYLISTS</b></h4>
+	<div class="row">
+
+      {% for playlist in playlistList %}
+  
+  <a href="{{ path('playlist_view', {'id': playlist.id } ) }}">
+		
+      <div class="col-sm-3">
+		    
+        <!--Card-->
+        <div class="card">
+
+            <!--Card image-->
+            <img class="img-responsive" style="height:253px" src=# alt="Card image cap">
+      </a>
+            <!--Card content-->
+            <div class="card-body">
+                <!--Title-->
+                <h4 class="card-title"><b>{{ playlist.nom }}</b></h4> </i>
+                <!--Text-->
+                <p class="card-text"><i>Ajouté par <a href="{{ path('profile_others', {'id': playlist.getUser.getId } ) }}">{{ playlist.getUser.username }}</a> </i></p>
+                <a href="{{ path('playlist_play', {'id': playlist.id } ) }}" class="btn btn-primary">Jouer</a> 
+            </div>
+          </div>
+        
+<!--/.Card-->
+			</div>
+
+  
+      {% endfor %}
+
+
+	</div>
+</div>            
+
+
+
+
+<!--genres-->
+
+
+<div class="container">
+
+
+
+
+    <h4 class="title-music"> <i class="fa fa-folder-open" style="font-size:24px;color:red"></i> <b>NOS GENRES</b></h4>
+	<div class="row">
+
+      {% for playlist in playlistList %}
+  
+  <a href="{{ path('playlist_view', {'id': playlist.id } ) }}">
+		
+      <div class="col-sm-3">
+		    
+        <!--Card-->
+        <div class="card">
+
+            <!--Card image-->
+            <img class="img-responsive" style="height:253px" src=# alt="Card image cap">
+      </a>
+            <!--Card content-->
+            <div class="card-body">
+                <!--Title-->
+                <h4 class="card-title"></h4> </i>
+                <!--Text-->
+                <p class="card-text"></p>
+        
+            </div>
+          </div>
+        
+<!--/.Card-->
+			</div>
+
+  
+      {% endfor %}
+
+
+	</div>
+</div>            
+
+
 <!--menu side-->
 <h4 class="what_to_do">.</h4>
 
@@ -110,18 +219,14 @@
 		</div>
 	</div>
 	<div class="container">
-		<h2 class="menu_title">Menu Title</h2>
+		<h2 class="menu_title">Menu</h2>
 		<ul class="list_load">
-			<li class="list_item"><a href="#">List Item 01</a></li>
-			<li class="list_item"><a href="#">List Item 02</a></li>
-			<li class="list_item"><a href="#">List Item 03</a></li>
-			<li class="list_item"><a href="#">List Item 04</a></li>
-			<li class="list_item"><a href="#">List Item 05</a></li>
-			<li class="list_item"><a href="#">List Item 06</a></li>
-			<li class="list_item"><a href="#">List Item 07</a></li>
-			<li class="list_item"><a href="#">List Item 08</a></li>
+			<li class="list_item"><a href="{{ path('music_list' ) }}">Musiques</a></li>
+			<li class="list_item"><a href="{{ path('playlist_list' ) }}">Playlists</a></li>
+			<li class="list_item"><a href="{{ path('fos_user_profile_show' ) }}">Profil</a></li>
+
 		</ul>
-		<div class="spacer_box"><p>This is a spacer box.</p></div>
+		<!--iv class="spacer_box"><p>This is a spacer box.</p></div-->
 	</div>
 </div>
 </div>

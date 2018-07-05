@@ -1,9 +1,64 @@
-{% extends 'base.html.twig' %}
+{% extends "::base.html.twig" %}
 
 {% block body %}
-  <h3>Formulaire de musique</h3>
 
-  <div class="well">
-    {{ form(form) }}
-  </div>
+
+
+
+     <div class="wrapper_login">
+        <div class="container">
+          <!-- Content here -->
+          <div class="login">
+		<img class="logo" src="../image/logo_blanc.png">
+		{{ form_start(form, {'method': 'post', 'enctype' :'multipart/form-data'}) }}
+		
+    <div class="form-group">
+		    {{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Titre ' } }) }}
+		</div>
+    <div class="form-group">
+		    {{ form_widget(form.genre, {'attr': {'class': 'form-control', 'placeholder': 'Genre ' } }) }}
+		</div>
+		<div class="form-group">
+		    {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Description ' } }) }}
+		</div>
+    <div class="form-group">
+		    {{ form_widget(form.artiste, {'attr': {'class': 'form-control', 'placeholder': 'Artiste' } }) }}
+		</div>
+    <div class="form-group">
+		    {{ form_widget(form.temps, {'attr': {'class': 'form-control', 'placeholder': 'Durée(s)' } }) }}
+		</div>
+    <div class="form-group">
+        {{ form_label(form.telechargeable, 'Telechargeable') }}
+		    {{ form_widget(form.telechargeable) }}
+		</div>
+    
+    <div class="form-group">
+        {{ form_label(form.date_creation, 'Date de sortie') }}
+		    {{ form_widget(form.date_creation,  {'attr': {'class': 'form-control'} }) }}
+		</div>
+    <div class="form-group">
+         {{ form_label(form.photo, 'Cover') }}
+		    {{ form_widget(form.photo) }}
+        {{ form_errors(form.photo) }}
+		</div>
+    <div class="form-group">
+        {{ form_label(form.morceau, 'Morceau') }}
+		    {{ form_widget(form.morceau) }}
+        {{ form_errors(form.morceau) }}
+		</div>
+
+        <div class="form-group">
+		    {{ form_widget(form.save, { 'label': 'Créer une Musique' , 'attr':{'class': 'btn'} }) }}
+		</div>
+
+    <div>
+		   <input type="hidden" id="appbundle_music__token" name="appbundle_music[_token]" value="LpuNxHIMleDXzqmB9yCBA51JcvtcKMVBti9pwFD122o">
+		</div>
+
+        
+		
+</form>
+</div>
+</div>
+</div>
 {% endblock %}

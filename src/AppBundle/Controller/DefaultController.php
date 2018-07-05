@@ -23,8 +23,21 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $musicRepository = $em->getRepository('AppBundle:Music');
+        $playlistRepository = $em->getRepository('AppBundle:Playlist');
+
+        //$listMusic = $musicRepository->findByUser($user);
+        $listMusic = $musicRepository->findAll();
+        $playlistList = $playlistRepository->findAll();
+
+
         // replace this example code with whatever you need
-        return $this->render('home_page.html.twig', []);
+        return $this->render('home_page.html.twig', array(
+            'listMusic' => $listMusic,
+            'playlistList' => $playlistList
+
+          ));
     }
 
 

@@ -1,21 +1,128 @@
-{% extends "::base.html.twig" %}
+{% block head_css %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/menu.css') }}">
+        <!--link rel="stylesheet" href="../css/sliding-carousel.css" /-->
+        <!--<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">-->
 
-{% block title %}AppBundle:Playlist:list{% endblock %}
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+       
+        <link rel="stylesheet" href="{{ asset('css/playlist-choix.css') }}">
+
+{% endblock %}
 
 {% block body %}
+<!--content-->
+<div class="page_content">
+<h1 class="page_title">
+	<div class="logo">
+	 	<a href="{{ path('userhomepag' ) }}"><img class="logo" src="../image/logo_blanc.png"></a> 
+	</div>
+	<!--input serch-->
+    <div id="custom-search-input">
+            <div class="input-group col-md-12">
+               <input type="text" class="form-control input-lg" id="search" placeholder="Rechercher..." />
+                <span class="input-group-btn">
+                <button class="btn btn-info btn-lg" type="button">
+                 <i class="glyphicon glyphicon-search"></i>
+                </button>
+             </span>
+         </div>
+    </div>
 
-<h3>Choisissez une playlist</h3>
-<ul>
-  {% for playlist in playlistList %}
+    <!-- profile user -->
+    <div class="profile">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul>
+     	<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <img src="{{ asset('image/bg.jpg') }}" alt="..." class="rounded-circle">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      </ul>
+     </div>
+    </div>
 
-    <li> 
-      <a href="">{{ playlist.nom }}</a>
-      <a href="{{ path('playlist_add_song', {'id_m': id_music, 'id_p': playlist.id } ) }}">Ajouter à cette playlist</a>
 
-    </li>
 
-  {% endfor %}
-</ul>
+<div class="container">
 
-<a href="{{ path('playlist_add') }}">Créer une nouvelle playlist</a>
+	<!-- Category -->
+	<div class="single category">
+		    <h3 class="side-title">Choix Playlist</h3>
+		        <ul class="list-unstyled">  {% for playlist in playlistList %}
+		        	<li><a href="{{ path('playlist_add_song', {'id_m': id_music, 'id_p': playlist.id } ) }}" >{{ playlist.nom }} <i class="material-icons" style="font-size:25px;color:red">playlist_add</i></a> </li>
+{% endfor %}</ul>
+
+</div>
+
+
+<a class="btn btn-primary" href="{{ path('playlist_add') }}">Créer une nouvelle playlist</a>
+
+</div>
+
+
+
+<!--menu side-->
+<h4 class="what_to_do">.</h4>
+
+<div class="side_menu">
+	<div class="burger_box">
+		<div class="menu-icon-container">
+			<a href="#" class="menu-icon js-menu_toggle closed">
+				<span class="menu-icon_box">
+					<span class="menu-icon_line menu-icon_line--1"></span>
+					<span class="menu-icon_line menu-icon_line--2"></span>
+					<span class="menu-icon_line menu-icon_line--3"></span>
+				</span>
+			</a>
+		</div>
+	</div>
+	<div class="container">
+		<h2 class="menu_title">Menu Title</h2>
+		<ul class="list_load">
+      <li class="list_item"><a href="{{ path('music_list' ) }}">Musiques</a></li>
+			<li class="list_item"><a href="{{ path('playlist_list' ) }}">Playlists</a></li>
+			<li class="list_item"><a href="{{ path('fos_user_profile_show' ) }}">Profil</a></li>
+		</ul>
+		<div class="spacer_box"><p>This is a spacer box.</p></div>
+	</div>
+</div>
+</div>
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="../js/jquery-1.7.min.js" type="text/javascript"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src="{{ asset('js/menu.js') }}"></script>
+            <script src="../../js/carousel/jquery-slidingCarousel.js" type="text/javascript"></script>
+
+            <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+            
+            <!--<script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.js') }}"></script>-->
+        <script type="text/javascript">
+        $(function() {
+            var carousel = $("#carousel").slidingCarousel({
+                squeeze: 100
+            });
+        });
+        </script>
 {% endblock %}

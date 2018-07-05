@@ -40,7 +40,7 @@
 .wrapper_login {
 	background-image:url(../image/bg.jpg);
 	background-repeat:no-repeat;
-	height: 100vh;
+	height: 120vh;
 	padding-top: 50px;
 	background-size: cover;
 	overflow: hidden;
@@ -214,7 +214,7 @@ a {
 	text-align: left;
 }
 .card-body {
-	height: 600px;
+	height: 210px;
 }
 .btn_card {
 	color: #fff;

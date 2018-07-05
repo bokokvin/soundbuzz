@@ -27,8 +27,14 @@ class MusicType extends AbstractType
         ->add('description',    TextareaType::class)
         ->add('artiste',        TextType::class)
         ->add('temps',          IntegerType::class)
-        ->add('telechargeable', CheckboxType::class, array('required' => false))
-        ->add('date_creation',  DateType::class)
+        ->add('telechargeable', CheckboxType::class,
+        array(
+                'required' => false,
+         ))
+        ->add('date_creation',  DateType::class, 
+            array(
+            'widget' => 'single_text',
+       ))
         ->add('morceau',        MorceauType::class)
         ->add('save',           SubmitType::class);
     }/**
