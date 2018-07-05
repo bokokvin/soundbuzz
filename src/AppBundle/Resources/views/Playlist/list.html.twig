@@ -17,4 +17,46 @@
 
   {% endfor %}
 </ul>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ asset('css/music-list.css') }}">
+
+
+
+
+<div class="container">
+	<div class="row">
+
+  {% for playlist in playlistList %}
+  
+  <a href="{{ path('playlist_view', {'id': playlist.id } ) }}">
+		
+      <div class="col-sm-3">
+		    
+        <!--Card-->
+        <div class="card">
+
+            <!--Card image-->
+            <img class="img-responsive" style="height:253px" src="http://soundbuzz.fr/uploads/images_sons/{{ playlist.getMusics[0].getPhoto.getUrl }}" alt="Card image cap">
+
+            <!--Card content-->
+            <div class="card-body">
+                <!--Title-->
+                <h4 class="card-title"><b>{{ playlist.nom }}</b></h4>
+                <!--Text-->
+                <p class="card-text"><i>Ajouté par <a href="{{ path('profile_others', {'id': playlist.getUser.getId } ) }}">{{ playlist.getUser.username }}</a> </i></p>
+                <a href="{{ path('playlist_play', {'id': playlist.id } ) }}" class="btn btn-primary">Jouer</a> 
+            </div>
+          </div>
+        
+<!--/.Card-->
+			</div>
+  </a>
+  
+      {% endfor %}
+
+	</div>
+</div>
+
+
 {% endblock %}

@@ -1,11 +1,13 @@
 {% extends "base.html.twig" %}
 {% block body %}
+<div class="wrapper">
+<!-- navigation -->
 <nav class="navbar">
   <div class="navbar-brand"><img class="logo1" src="../image/logo_blanc2.png"></div>
   <div class="menu_right">
   	<a href="#" style="color: #fff;margin-top:5px;">Offres</a>
-  	<a class="btn ind" href="{{ path('fos_user_security_login') }}">S'indentifier</a>
-  	<a class="btn ins" href="{{ path('fos_user_registration_register') }}">Inscription</a>	
+  	<a class="btn ind" href="#">S'indentifier</a>
+  	<a class="btn ins" href="#">Inscription</a>	
   </div>
 </nav>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -24,7 +26,7 @@
       	</div>
       	<div class="bloc-btn">
       		<a class="btn essaye" href="#">Essayer pour 30jours</a>
-      		<span class="glyphicon glyphicon-chevron-down"></span>
+      		<i class="material-icons expand_more"><a href="#avantage">expand_more</a></i>
       	</div>
 	  </div>
     </div>
@@ -44,5 +46,173 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<!-- section 1 avanatage -->
+<section id="avantage" class="avantage">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 text">
+        <h2>Les avantages de SoundBuzz</h2>
+        <p>Lorem ipsum dolor sit amet,<br> 
+          consectetur adipisicing <br>
+          elit,sed do eiusmod <br>
+          tempor incididunt <br>
+           ut labore. <br></p>
 
+           <h2>Des styles, des univers</h2>
+           <p>Lorem ipsum dolor sit amet,<br> 
+          consectetur adipisicing <br>
+          elit,sed do eiusmod <br>
+          tempor incididunt <br>
+           ut labore. <br>
+      </div>
+      <div class="col-xs-6">
+        <img src="{{ asset('image/image_ananas.jpg') }}" alt="avantage SoundBuzz">
+      </div>
+  </div>
+  </div>
+</section>
+
+<!--section 2 -->
+<section class="section2">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <img src="{{ asset('image/girl.png') }}">
+      </div>
+      <div class="col-xs-12 col-sm-6  text">
+        <h2>Un compte.<br> 
+        Emportez votre musique partout.</h2>
+        <p>Lorem ipsum dolor sit amet,<br> 
+          consectetur adipisicing <br>
+          elit,sed do eiusmod <br>
+          tempor incididunt <br>
+           ut labore. <br></p>
+
+           <h2>Votre bande-son personnalisée</h2>
+           <p>Lorem ipsum dolor sit amet,<br> 
+          consectetur adipisicing <br>
+          elit,sed do eiusmod <br>
+          tempor incididunt <br>
+           ut labore. <br>
+      </div>
+  </div>
+</section>
+
+<!--section 3 -->
+<section class="section3">
+  <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4">
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">FREE</h3>
+              <p class="card-text">Accédez instantanément à des millions de titres. <br>
+                    <strong>0,00 €</strong> / mois <br>
+                    Aucune carte de crédit nécessaire.</p>
+              <p>
+                <ul>
+                  <li>Des millions de titres et de podcasts.</li>
+                  <li>Des playlists concoctées rien que  pour vous, chaque jour. </li>
+                  <li>Écoutez en arrière-plan alors que vous utilisez d'autres applis.</li>
+                  <li>Écoutez en mode aléatoire sur tous vos appareils, avec des coupures pubs.</li>
+                  <li>Sélectionnez des titres dans les meilleures playlists.</li>
+                </ul> 
+              </p>
+              <a href="#" class="btn btn_card btn_free">GRATUIT</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6 col-md-4">
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">PREMIUM</h3>
+              <p class="card-text">Pour une écoute encore plus agréable.
+                    <strong>0,99 €</strong> / 3 mois <br>
+                    Seulement <strong>9,99 €</strong> / mois ensuite. <br>
+                    Annulez à tout moment.* <br>
+                    Offres Étudiants disponibles.</p>
+                <ul>
+                  <li>Des millions de titres et de podcasts.</li>
+                  <li>Des playlists concoctées rien que  pour vous, chaque jour. </li>
+                  <li>Écoutez en arrière-plan alors que vous utilisez d'autres applis.</li>
+                  <li>Écoutez en mode aléatoire sur tous vos appareils, avec des coupures pubs.</li>
+                  <li>Sélectionnez des titres dans les meilleures playlists.</li>
+                </ul> 
+             
+              <a href="#" class="btn btn_premuim btn_card">DEMARRER PREMUIM</a>
+            </div>
+          </div>
+        </div>
+
+         <div class="col-xs-6 col-md-4">
+          <div class="card text-center" style="width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">OFFRE <br> ETUDIANTS</h3>
+              <p class="card-text">Pour une écoute encore plus agréable. <br>
+                    <strong>4,99</strong>€ / 12 mois <br>
+                    Aucune publicité <br>
+                    Musique illimitée <br>
+                    Mode hors connexion <br>
+                    6 profils</p>
+                <ul>
+                  <li>Des millions de titres et de podcasts.</li>
+                  <li>Des playlists concoctées rien que  pour vous, chaque jour. </li>
+                  <li>Écoutez en arrière-plan alors que vous utilisez d'autres applis.</li>
+                </ul> 
+             
+              <a href="#" class="btn btn_card">S'ABONNER</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="footer">
+  <div class="container">
+   <div class="row">
+      <div class="col">
+        <img src="{{ asset('image/logo_blanc2.png') }}" alt="SoundBuzz">
+        <div class="social_media">
+          <img src="{{ asset('image/facebook.png') }}">
+          <img src="{{ asset('image/instagram.png') }}">
+          <img src="{{ asset('image/twitter.png') }}">
+           <img src="{{ asset('image/youtube-symbol.png') }}">
+        </div>
+      </div>
+      <div class="col">
+        <h6>SOUNDBUUZ</h6>
+        <ul>
+          <li>Offres</li>
+          <li>Fonctionnalités</li>
+          <li>Explorer tout nos univers</li>
+          <li>Appareils</li>
+          <li>Blog</li>
+          <li>Aide</li>
+        </ul>
+      </div>
+      <div class="col">
+         <h6>QUI SOMMES-NOUS ?</h6>
+        <ul>
+          <li>à propos</li>
+          <li>Carrières</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h6>LEGAL</h6>
+        <ul>
+          <li>Conditions générales d’utilisation</li>
+          <li>Données Personnelles et cookies</li>
+          <li>Mentions légales</li>
+          <li>Paramêtres de confidentialité</li>
+        </ul>
+      </div>
+   </div>
+   <div class="copyright">
+     <p>©2018 SoundBuzz International, Inc. Tous droits réservés</p>
+   </div>
+   </div>
+</footer>
+</div><!--wrapper-->
 {% endblock %}

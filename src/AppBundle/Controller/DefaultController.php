@@ -12,38 +12,19 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function homepageAction(Request $request)
     {
         // replace this example code with whatever you need
         return $this->render('index.html.twig', []);
     }
 
-
     /**
-    * @Route("profile-others/{id}", name="profile_others")
-    */
-    public function profileAction($id)
+     * @Route("/mon_compte", name="userhomepag")
+     */
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $userRepository = $em->getRepository('AppBundle:User');
-        $musicRepository = $em->getRepository('AppBundle:Music');
-        $playlistRepository = $em->getRepository('AppBundle:Playlist');
-
-        $user  = $userRepository->findOneById($id);
-
-        $music = $musicRepository->findByUser($user);
-
-        $playlist = $playlistRepository->findByUser($user);
-        
-
-        return $this->render('AppBundle:Default:profile.html.twig', 
-        array(
-            'user' => $user,
-            'music' => $music,
-            'playlist' => $playlist,
-
-          ));
+        // replace this example code with whatever you need
+        return $this->render('home_page.html.twig', []);
     }
 
 

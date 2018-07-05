@@ -4,22 +4,10 @@
 {% block body %}
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="{{ asset('css/music-list.css') }}">
 
 
-<h1> Les titres des morceaux de l'utilisateur {{ app.user.username }} </h1>
 
-<ul>
-  {% for music in listMusic %}
-
-    <li> 
-      <a href="{{ path('music_play', {'id': music.id } ) }}">{{ music.titre }}</a>
-      <a href="{{ path('music_delete', {'id': music.id } ) }}">Supprimer ce morceau</a>
-      <a href="{{ path('playlist_choix', {'id_music': music.id } ) }}">Ajouter à une playlist</a>
-      <b> {{ music.genre }} {{ music.artiste }}</b> 
-    </li>
-
-  {% endfor %}
-</ul>
 
 <div class="container">
 	<div class="row">
@@ -32,16 +20,16 @@
         <div class="card">
 
             <!--Card image-->
-            <img class="img-responsive" style="height:253px" src="http://soundbuzz.fr/uploads/images_sons/{{ music.getPhoto.getUrl }}" alt="Card image cap">
+            <img class="zoom-out" style="height:253px" src="http://soundbuzz.fr/uploads/images_sons/{{ music.getPhoto.getUrl }}" alt="Card image cap">
 
             <!--Card content-->
             <div class="card-body">
                 <!--Title-->
-                <h4 class="card-title">{{ music.titre }}</h4>
+                <h4 class="card-title"><b>{{ music.titre }}</b></h4>
                 <!--Text-->
-                <p class="card-text">Ajouté par <a href="{{ path('profile_others', {'id': music.getUser.getId } ) }}">{{ music.getUser.username }}</a></p>
+                <p class="card-text"><i>Ajouté par <a href="{{ path('profile_others', {'id': music.getUser.getId } ) }}">{{ music.getUser.username }}</a> </i></p>
                 <a href="{{ path('music_play', {'id': music.id } ) }}" class="btn btn-primary">Jouer</a> 
-                <a href="{{ path('playlist_choix', {'id_music': music.id } ) }}" class="btn btn-primary">Ajouter à une plaulist</a>
+                <a href="{{ path('playlist_choix', {'id_music': music.id } ) }}" class="btn btn-primary">Ajouter à une playlist</a>
             </div>
           </div>
         
