@@ -27,7 +27,7 @@
                             <label class="form-check-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                         </div>
                         <div class="col-md-6"> 
-                            <small id="emailHelp" class="form-text text-muted"><a href="#">Mot de passe oublié ?</a></small>
+                            <small id="emailHelp" class="form-text text-muted"><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a></small>
                         </div>
                     </div>
                   </div>
@@ -41,11 +41,7 @@
                   <button type="submit" class="btn facebook">Se connecter avec Facebook</button>
                   <button type="submit" class="btn twitter">Se connecter avec Twitter</button>
             </form>
-       
-
-<a class="forgot-password" href="{{ path('fos_user_resetting_request') }}"> Mot de passe oublié ? </a>
-
-
+    
 {% if error %}
     <div style="color:white;">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
