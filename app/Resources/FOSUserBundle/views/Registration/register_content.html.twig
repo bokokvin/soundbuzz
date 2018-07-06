@@ -3,7 +3,7 @@
         <div class="container">
           <!-- Content here -->
           <div class="login">
-		<img class="logo" src="../image/logo_blanc.png">
+		<a href="{{ path('homepage' ) }}"><img class="logo" src="../image/logo_blanc.png"></a> 
 		{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register') }) }}
 		<div class="form-group">
 		    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email' } }) }}

@@ -1,6 +1,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
             <!--logo-->
-            <img class="logo" src="../image/logo_blanc.png">
+            <<a href="{{ path('homepage' ) }}"><img class="logo" src="../image/logo_blanc.png"></a> 
             {% if error %}
                 <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}

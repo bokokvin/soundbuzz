@@ -3,11 +3,13 @@
 <div class="wrapper">
 <!-- navigation -->
 <nav class="navbar">
-  <div class="navbar-brand"><img class="logo1" src="../image/logo_blanc2.png"></div>
+  <div class="navbar-brand">
+	 	<a href="{{ path('homepage' ) }}"><img style="width: 50%;"class="logo" src="../image/logo_blanc2.png"></a> 
+  </div>
   <div class="menu_right">
   	<a href="#" style="color: #fff;margin-top:5px;">Offres</a>
-  	<a class="btn ind" href="#">S'indentifier</a>
-  	<a class="btn ins" href="#">Inscription</a>	
+  	<a class="btn ind" href="/login">S'identifier</a>
+  	<a class="btn ins" href="/register">Inscription</a>	
   </div>
 </nav>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -50,22 +52,22 @@
 <section id="avantage" class="avantage">
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 text">
+      <div class="col-md-6 text">
         <h2>Les avantages de SoundBuzz</h2>
-        <p>Lorem ipsum dolor sit amet,<br> 
-          consectetur adipisicing <br>
-          elit,sed do eiusmod <br>
-          tempor incididunt <br>
-           ut labore. <br></p>
+        <p>Partagez vos morceaux préférés avec les autres internautes<br> 
+          Créez vos propres playlists<br>
+          Aimez <br>
+          Partagez <br>
+          Commentez <br>
+          </p>
 
            <h2>Des styles, des univers</h2>
-           <p>Lorem ipsum dolor sit amet,<br> 
-          consectetur adipisicing <br>
-          elit,sed do eiusmod <br>
-          tempor incididunt <br>
-           ut labore. <br>
+           <p>De belles covers pour vos musiques et pour vos playlists<br> 
+          Un lecteur audio elegant et ergonomique<br>
+          Des themes pour votre page de profil<br>
+          
       </div>
-      <div class="col-xs-6">
+      <div class="col-md-6">
         <img src="{{ asset('image/image_ananas.jpg') }}" alt="avantage SoundBuzz">
       </div>
   </div>
@@ -81,18 +83,17 @@
       <div class="col-xs-12 col-sm-6  text">
         <h2>Un compte.<br> 
         Emportez votre musique partout.</h2>
-        <p>Lorem ipsum dolor sit amet,<br> 
-          consectetur adipisicing <br>
-          elit,sed do eiusmod <br>
-          tempor incididunt <br>
-           ut labore. <br></p>
+        <p>Connectez-vous de puis n'importe où<br> 
+          Sur mobile ou sur Desktop<br>
+          Un design responsive <br>
+         
 
            <h2>Votre bande-son personnalisée</h2>
-           <p>Lorem ipsum dolor sit amet,<br> 
-          consectetur adipisicing <br>
-          elit,sed do eiusmod <br>
-          tempor incididunt <br>
-           ut labore. <br>
+           <p>Personnalisez vos playlists ou celles des autres<br> 
+              Ecoutez les en boucle sans devoir  <br>
+              appuyer sur précédent ou suivant<br>
+              Supprimez les morceaux que vous désirez plus écoutez <br>
+              Ajoutez en d'autres<br>
       </div>
   </div>
 </section>
@@ -103,7 +104,7 @@
       <div class="row">
         <div class="col-xs-6 col-md-4">
           <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body" style="height: 600px;">
               <h3 class="card-title">FREE</h3>
               <p class="card-text">Accédez instantanément à des millions de titres. <br>
                     <strong>0,00 €</strong> / mois <br>
@@ -124,7 +125,7 @@
 
         <div class="col-xs-6 col-md-4">
           <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body"  style="height: 600px;">
               <h3 class="card-title">PREMIUM</h3>
               <p class="card-text">Pour une écoute encore plus agréable.
                     <strong>0,99 €</strong> / 3 mois <br>
@@ -146,7 +147,7 @@
 
          <div class="col-xs-6 col-md-4">
           <div class="card text-center" style="width: 18rem;">
-            <div class="card-body">
+            <div class="card-body" style="height: 600px;">
               <h3 class="card-title">OFFRE <br> ETUDIANTS</h3>
               <p class="card-text">Pour une écoute encore plus agréable. <br>
                     <strong>4,99</strong>€ / 12 mois <br>
