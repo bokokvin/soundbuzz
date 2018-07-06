@@ -40,7 +40,7 @@
 .wrapper_login {
 	background-image:url(../image/bg.jpg);
 	background-repeat:no-repeat;
-	height: 120vh;
+	min-height: 100vh;
 	padding-top: 50px;
 	background-size: cover;
 	overflow: hidden;
