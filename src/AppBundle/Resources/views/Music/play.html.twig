@@ -16,6 +16,17 @@
   background: #FAF5FF;
 }
 
+#audio1 {
+    background: #f1f2f4;
+
+}
+
+div {
+    display:inline-block;
+    margin: 5px;
+}
+
+
 .music-player {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -211,77 +222,54 @@
 {% endblock %}
 
 {% block body %}
+
+
+
 <div class="music-player">
   <div class="player-main">
     <div class="main-current">
       <div class="current-keyvisual">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/329679/music-player-freebie-photo.png" />
+        <img src="http://soundbuzz.fr/uploads/images_sons/{{ playMusic.getPhoto.getUrl }}"/>
       </div>
       <div class="current-info">
-        <h1>Blame</h1>
-        <p>KYLE</p>
+        <h1>{{ playMusic.titre }}</h1>
+        <p>{{ playMusic.artiste }}</p>
       </div>
     </div>
-    <div class="main-control">
-      <div class="btn _previous">
-      </div>
-      <div class="btn _pause">
-      </div>
-      <div class="btn _next">
-      </div>
-      <div class="btn _timeline">
-        <span class="current-time">2:32</span>
-        <span class="timescope">
-          <span class="timescope-dot"></span>
-        </span>
-        <span class="end-time">4:00</span>
-      </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-md-4"><div id="audiowrap">
+                <div id="audio0">
+                    <audio preload id="audio1" controls="controls" controlsList="nodownload" >Your browser does not support HTML5 Audio!</audio>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-xs-6 col-md-4"><a class="ajax" href="{{ path('music_like', {'id': playMusic.id } ) }}">J'aime</a> <b id="ajax-results">{{ playMusic.score}}</b></div>
+             <div class="col-xs-6 col-md-4">
+<a href="https://www.facebook.com/sharer/sharer.php?u=http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"> Partager
+        </a></div>
+            <div class="col-xs-6 col-md-4">{% if playMusic.getTelechargeable == 1 %}  <a href="http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" download > Télécharger </a> {% endif %}</div>
+            
+        </div>
+
+           <b id="ecoute-results" href="#">{{ playMusic.ecoute }} </b> écoute(s)
+            <b id="download-results" href="#">{{ playMusic.download }} </b> téléchargement(s)
+
     </div>
+
+
   </div>
-  <ul class="player-list">
-    <li>
+
       <div class="list-info">
         {% include '@FOSComment/Thread/async.html.twig' with {'id': playMusic.id} %}
       </div>
-    </li>
-  </ul>
 </div>
-
-
-<div class="container">
-    <div class="column add-bottom">
-        <div id="mainwrap">
-            <div id="nowPlay">
-                <span class="left" id="npAction">Paused...</span>
-                <span class="right" id="npTitle"></span>
-            </div>
-            <div id="audiowrap">
-                <div id="audio0">
-                    <audio preload id="audio1" controls="controls" controlsList="nodownload" >Your browser does not support HTML5 Audio!</audio>
-                     {% if playMusic.getTelechargeable == 1 %}  <a href="http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" download > Télécharger </a> {% endif %}
-                </div>
-                
-                <div id="tracks">
-                    <a id="btnPrev">&larr;</a>
-                    <a id="btnNext">&rarr;</a>
-                </div>
-            </div>
-
            
-           
-        </div>
-        <a class="ajax" href="{{ path('music_like', {'id': playMusic.id } ) }}">J'aime</a> <b id="ajax-results">{{ playMusic.score}}</b>
-        <b id="ecoute-results" href="#">{{ playMusic.ecoute }} </b> écoute(s)
-        <b id="download-results" href="#">{{ playMusic.download }} </b> téléchargement(s)
 
-        
-
-        <a href="https://www.facebook.com/sharer/sharer.php?u=http://soundbuzz.fr/uploads/sons/{{ playMusic.getMorceau.getUrl }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"> Partager
-        </a>
-
-        
-
-
+     
     </div>
     
 </div>
