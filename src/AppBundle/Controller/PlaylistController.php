@@ -23,11 +23,14 @@ class PlaylistController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $playlistRepository = $em->getRepository('AppBundle:Playlist');
+        $musicRepository = $em->getRepository('AppBundle:Music');
 
-        $playlistList = $playlistRepository->findByUser($user);
+        $listMusic = $musicRepository->findAll();
+        $playlistList = $playlistRepository->findAll();
 
         return $this->render('AppBundle:Playlist:list.html.twig', array(
             'playlistList' => $playlistList,
+            'listMusic' => $listMusic,
           ));
     }
 

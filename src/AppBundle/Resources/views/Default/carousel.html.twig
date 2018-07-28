@@ -1,0 +1,18 @@
+<!--Carousel music-->
+	<div id="carousel">
+	<h3>Nouveautés</h3>
+
+			{% for music in listMusic %}
+
+				<div class="slide">
+					<p>
+						<a href="{{ path('music_play', {'id': music.id } ) }}"> <img style="height:253px; width:253px" alt="Image Caption" src="http://soundbuzz.fr/uploads/images_sons/{{ music.getPhoto.getUrl }}" /> </a>
+						<span>{{ music.titre }}</span>
+					</p>
+				</div>
+
+			{% endfor %}
+				
+				<div class="navigate-left"><img src="{{ asset('image/slider/arrow-left.png') }}" /></div>
+				<div class="navigate-right"><img src="{{ asset('image/slider/arrow-right.png') }}" /></div>
+		</div>

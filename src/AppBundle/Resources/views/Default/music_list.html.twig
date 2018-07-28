@@ -1,0 +1,36 @@
+<!--music list-->
+
+<div class="container">
+
+    <h4 class="title-music"> <i class="fa fa-music" style="font-size:24px;color:red"></i> <b>NOS MORCEAUX</b></h4>
+	<div class="row">
+
+
+  {% for music in listMusic %}
+
+		<div class="col-sm-3">
+		    
+        <!--Card-->
+        <div class="card">
+
+            <!--Card image-->
+            <img class="img-responsive" style="height:253px" src="http://soundbuzz.fr/uploads/images_sons/{{ music.getPhoto.getUrl }}" alt="Card image cap">
+
+            <!--Card content-->
+            <div class="card-body">
+                <!--Title-->
+                <h4 class="card-title"><b>{{ music.titre }}</b></h4>
+                <!--Text-->
+                <p class="card-text"><i>Ajouté par <a href="{{ path('profile_others', {'id': music.getUser.getId } ) }}">{{ music.getUser.username }}</a> </i></p>
+                <a href="{{ path('music_play', {'id': music.id } ) }}" class="btn btn-primary">Jouer</a> 
+                <a href="{{ path('playlist_choix', {'id_music': music.id } ) }}" class="btn btn-primary">Ajouter à une playlist</a>
+            </div>
+        </div>
+        
+        <!--/.Card-->
+		</div>
+
+      {% endfor %}
+
+	</div>
+</div>    

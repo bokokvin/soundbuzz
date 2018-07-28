@@ -119,6 +119,8 @@ class MusicController extends Controller
         $em = $this->getDoctrine()->getManager();
         $musicRepository = $em->getRepository('AppBundle:Music');
 
+        $listMusic = $musicRepository->findAll();
+
         $playMusic  = $musicRepository->findOneById($id);
 
         $name       = $playMusic->getMorceau()->getUrl();
@@ -127,7 +129,7 @@ class MusicController extends Controller
 
         return $this->render('AppBundle:Music:play.html.twig', 
         array(
-            'urlMusic' => $urlMusic, "name" => $name, "playMusic" => $playMusic,
+            'urlMusic' => $urlMusic, "name" => $name, "playMusic" => $playMusic, 'listMusic' => $listMusic,
           ));
     }
 

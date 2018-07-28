@@ -1,5 +1,5 @@
 #carousel {
-  height: 350px;
+  height: 400px;
   width: 1200px;
   background-color: #28292a;
   position: relative;
@@ -60,7 +60,7 @@
   cursor: pointer;
   position: absolute;
   bottom: 10px;
-  left: 220px;
+  left: 493px;
 }
 
 #carousel .navigate-right {
